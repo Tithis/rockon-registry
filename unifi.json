@@ -2,7 +2,7 @@
     "Ubiquiti Unifi": {
         "containers": {
             "unifi": {
-                "image": "jacobalberty/unifi",
+                "image": "linuxserver/unifi",
                 "launch_order": 1,
                 "ports": {
                     "8080": {
@@ -46,12 +46,39 @@
                         "label": "STUN Port",
                         "protocol": "udp",
                         "ui": false
+                    },
+                    "6790": {
+                        "description": "Speed Test. Suggested default: 6790",
+                        "host_default": 6790,
+                        "label": "Speed Test",
+                        "protocol": "tcp",
+                        "ui": false
+                    },
+                    "10001": {
+                        "description": "UBNT Discovery. Suggest default 10001",
+                        "host_default": 10001,
+                        "label": "UBNT Discovery",
+                        "protocol": "udp",
+                        "ui": false
                     }
+
                 },
                 "volumes": {
-                    "/var/lib/unifi": {
+                    "/config": {
                         "description": "Choose a Share for Unifi Controller configuration. Eg: create a Share called unifi-config for this purpose alone.",
                         "label": "Config Storage"
+                    }
+                },
+				"environment": {
+                    "PUID": {
+						"description": "Enter a valid UID to run Unifi as. It must have full permissions to all Shares mapped in the previous step.",
+                        "label": "UID to run Unifi as.",
+                        "index": 1
+					},
+                    "PGID": {
+                        "description": "Enter a valid GID to use along with the above UID. It(or the above UID) must have full permissions to all Shares mapped in the previous step.",
+                        "label": "GID to run Unifi as.",
+                        "index": 2
                     }
                 }
             }
@@ -62,7 +89,7 @@
         "ui": {
             "slug": ""
         },
-        "website": "https://hub.docker.com/r/jacobalberty/unifi/",
-        "version": "1.0"
+        "website": "https://hub.docker.com/r/linuxserver/unifi/",
+        "version": "latest"
     }
 }
