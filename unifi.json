@@ -90,6 +90,6 @@
             "slug": ""
         },
         "website": "https://hub.docker.com/r/linuxserver/unifi/",
-        "version": "latest"
+        "version": "1.1"
     }
 }
